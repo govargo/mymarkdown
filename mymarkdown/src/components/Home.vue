@@ -1,6 +1,5 @@
 <template>
-    <div>
-      <h1>{{ msg }}</h1>
+    <div class="home">
         <button @click="googleLogin">Google アカウントでログイン</button>
     </div>
 </template>
@@ -22,4 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
+.home {
+    margin-top: 60px;
+}
 </style>

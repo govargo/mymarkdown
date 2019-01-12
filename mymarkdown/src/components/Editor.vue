@@ -1,8 +1,7 @@
 <template>
   <div class="editor">
-    <h1>エディター画面</h1>
-    <span>{{ user.displayName }}</span>
-    <button @click="logout">ログアウト</button>
+    <span class="displayName">{{ user.displayName }}</span>
+    <button class="logOut" @click="logout">ログアウト</button>
     <div class="editorWrapper">
       <div class="memoListWrapper">
         <div class="memoList" v-for="(memo, index) in memos" :key="index" @click="selectMemo(index)" :data-selected="index == selectedIndex">
@@ -13,7 +12,7 @@
         <button class="saveMemosBtn" @click="saveMemos">メモの保存</button>
       </div>
       <textarea class="markdown" v-model="memos[selectedIndex].markdown"></textarea>
-      <div class="preview" v-html="preview()"></div>
+      <div class="preview markdown-body" v-html="preview()"></div>
     </div>
   </div>
 </template>
@@ -48,7 +47,7 @@ export default {
     },
     mounted: function() {
       document.onkeydown = e => {
-        if (e.key == "s" && (e.metaKey || e,ctrlKey)) {
+        if (e.key == "s" && (e.metaKey || e.ctrlKey)) {
           this.saveMemos();
           return false;
         }
@@ -93,6 +92,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.displayName {
+  margin-bottom: 5%;
+}
+
+.logOut {
+   margin-bottom: 1%; 
+}
+
 .editorWrapper {
   display: flex;
 }
